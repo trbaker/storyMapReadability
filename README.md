@@ -1,4 +1,4 @@
-# ArcGIS storyMap Readability
+# ArcGIS Storymap Grade Level Readability
 Determines the Flesch–Kincaid grade level readability of an ArcGIS Storymap.
 
 ## Sample Python
@@ -24,7 +24,7 @@ part to fast code production.  We also don't know the exact formula used by MS.
 
 ## Try it
 
-This repo also includes a functioning sample here.
+This repo also includes a [functioning sample here](https://trbaker.github.io/storyMapReadability/).
 
 
 
