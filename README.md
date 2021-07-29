@@ -24,7 +24,7 @@ part to fast code production.  We also don't know the exact formula used by MS.
 
 ## Try it
 
-This repo also includes a functioning sample here.
+This repo also includes a [functioning sample here](https://trbaker.github.io/storyMapReadability/).
 
 
 
