@@ -59,7 +59,7 @@ for i in range(0, len(storymaplist)):
             dip1 = 0    # set to zero to align better with MS Words FK results
             syllables = syllables - trailingE - dip1
             words = words + myvar.count(' ') +1
-            sentences = sentences + myvar.count('.') +1
+            sentences = sentences + myvar.count('.') + myvar.count('?')+ myvar.count('!') + .45  # the final constant is intended to help ofset title lines that don't contain punctuation. this number can be adjusted (prob .2 to 1.0).
             #print(syllables, words, sentences)
 
     # calculate fk
