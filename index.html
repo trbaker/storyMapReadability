@@ -4,7 +4,7 @@
 <script language="JavaScript"><!--
 function function1() {
   var badge = document.getElementById("box1").value;
-  var url = 'https://node5137.com/badgeproc/' + badge + '.png';
+  var url = 'https://us-central1-ultimate-choir-298915.cloudfunctions.net/storyMapGradeLevelReadability?url=' + badge;
   var el = document.getElementById('iframe1');
   el.src = url;
 }
@@ -17,7 +17,7 @@ This script calculates the Flesch-Kincaid grade level readability score for an A
 	
 	<div style="width: 700px;"><font size="-1">
 
-		
+<br />		
 Enter the ArcGIS Storymap Id in the form to find the grade level readability score.  
 </div>
 <table width=700><tr><td>		
