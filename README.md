@@ -1,4 +1,4 @@
-# ArcGIS Storymap Grade Level Readability
+# ArcGIS Storymap Flesch-Kincaid Readability
 Determines the Flesch–Kincaid grade level readability of an ArcGIS Storymap.
 
 ## Sample Python
