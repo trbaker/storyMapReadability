@@ -1,3 +1,41 @@
-<h2>Storymap Readability</h2>
 
-This script calculate the Flesch-Kincaid grade level readability score for an ArcGIS Storymap.
+<html>
+<head>
+<script language="JavaScript"><!--
+function function1() {
+  var badge = document.getElementById("box1").value;
+  var url = 'https://node5137.com/badgeproc/' + badge + '.png';
+  var el = document.getElementById('iframe1');
+  el.src = url;
+}
+//--></script>
+</head>
+<body><font face="verdana, arial">
+  <h2>Storymap Readability</h2>
+
+This script calculates the Flesch-Kincaid grade level readability score for an ArcGIS Storymap. I fyou find an error or encounter a problem, please send a note to tbaker@esri.com
+	
+	<div style="width: 700px;"><font size="-1">
+
+		
+Enter the ArcGIS Storymap Id in the form to find the grade level readability score.  
+</div>
+<table width=700><tr><td>		
+<hr size=1 noshade width='300'>
+<center>
+	<form name="form1" onSubmit="event.preventDefault(); function1();">
+Storymap id: <input type="text" id="box1" name="box1" onkeydown = "if (event.keyCode == 13) document.getElementById('myButton').click()"/>
+<input type='button' id="myButton" value="Go" onclick="javascript:function1();"/>
+ </form>
+</center><hr size=1 noshade width='300'>
+	</td></tr></table>
+
+
+<iframe id="iframe1" name="iframe1"
+	width="700"
+	height="500"
+	src="http://trbaker.github.io/badge/main.html">
+</iframe>
+
+<body>
+
