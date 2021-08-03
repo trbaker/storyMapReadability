@@ -2,6 +2,7 @@ import requests
 import json
 import pprint
 import re
+import ast
 
 # vars
 syllables=0
@@ -63,8 +64,18 @@ for i in range(0, len(storymaplist)):
             #print(syllables, words, sentences)
 
     # calculate fk
-    fk = (.39 * (words / sentences)) + (11.8 * (syllables / words)) -15.59
     print('Title: ' + title)
     print('URL: ' + publicURL)
-    print('Approximate Flesch-Kincaid reading grade level: ', round(fk, 1))
+    fk = (.39 * (words / sentences)) + (11.8 * (syllables / words)) -15.59
+    # estimate Lexile Reader Measure
+    # table: http://www.evers.cps.edu/What%20is%20A%20Lexile%20and%20How%20Does%20it%20Compare%20to%20My%20RIT%20Score.html
+    # table: https://www.lexialearning.com/blog/more-number-what-is-lexile-measure
+    final_fk = round(fk, 1)
+    with open('lexile.txt') as f:
+        data = f.read()
+        lexiledata = ast.literal_eval(data)
+    for key in lexiledata:
+        if str(key) == str(final_fk):
+            print('Estimated Lexile reading score: ' + str(lexiledata[key]) + 'L')
+    print('Approximate Flesch-Kincaid reading grade level: ', final_fk)
     print('  ')
