@@ -2,6 +2,7 @@
 import json
 import requests
 import re
+import ast
 
 def create(request):
     syllables=0
@@ -60,7 +61,15 @@ def create(request):
 
     # calculate fk
     fk = (.39 * (words / sentences)) + (11.8 * (syllables / words)) -15.59
-    output='Title: ' + title + '<br>URL: <a target="new" href="' + publicURL + '">' + publicURL + '</a><br>Approximate Flesch-Kincaid reading grade level: ' + str(round(fk, 1))
+
+    final_fk = round(fk, 1)
+    with open('lexile.txt') as f:
+        data = f.read()
+        lexiledata = ast.literal_eval(data)
+    for key in lexiledata:
+        if str(key) == str(final_fk):
+            lexileoutput='<br>Estimated Lexile reading score: ' + str(lexiledata[key]) + 'L'
+    output='Title: ' + title + '<br>URL: <a target="new" href="' + publicURL + '">' + publicURL + '</a><br>Approximate Flesch-Kincaid reading grade level: ' + str(round(fk, 1)) + lexileoutput
     print(str(round(fk, 1)))
 
     return output
