@@ -13,6 +13,9 @@ def create(request):
     syllables5 = 0
     sentences=0
     words=0
+    wordcounterr1=0
+    wordcounterr2=0
+    wordcounterr3=0
 
     try:
         storymap = request.args.get('url')
@@ -49,19 +52,33 @@ def create(request):
             syllables3 = myvar.count('i')
             syllables4 = myvar.count('o')
             syllables5 = myvar.count('u')
-            syllables = syllables + syllables1 + syllables2 + syllables3 + syllables4 + syllables5
+            syllables6 = myvar.count('y')
+            syllables = syllables + syllables1 + syllables2 + syllables3 + syllables4 + syllables5 + syllables6
             # remove common diphthongs and trailing e to improve syllable count
             trailingE = myvar.count('e ')
-            #dip1 = myvar.count('ea')
-            dip1 = 0    # set to zero to align better with MS Words FK results
-            syllables = syllables - trailingE - dip1
-            words = words + myvar.count(' ') +1
-            sentences = sentences + myvar.count('.') + myvar.count('?')+ myvar.count('!') + .45  # the final constant is intended to help ofset title lines that don't contain punctuation. this number can be adjusted (prob .2 to 1.0).
-            #print(syllables, words, sentences)
+            dipthongs = ['ae', 'ai', 'au', 'ay', 'ea', 'ee', 'ei', 'ey' 'ie', 'oa', 'oo', 'ou', 'ey', 'oy', 'uy']
+            # dipthongs = ['ou', 'oy', 'oi']
+            diptotal=0
+            dip=0
+            for dip in dipthongs:
+                temp = myvar.count(dip)
+                diptotal = diptotal + temp
+            syllables = syllables - trailingE - diptotal
+            words = words + myvar.count(' ') + 1  # the added 1 accounts for the last word in each block.
+            # clean up some word count issues
+            wordcounterr1 = myvar.count(' - ')
+            wordcounterr2 = myvar.count('0 ')   # number w trailing space should keep from counting single or multi digits numbers
+            wordcounterr3 = myvar.count('1 ')
+            wordcounterr4 = myvar.count('2 ')
+            wordcounterr5 = myvar.count('3 ')
+            wordcounterr6 = myvar.count('4 ')
+            wordcounterr7 = myvar.count('5 ')
+            words = words - wordcounterr1 - wordcounterr2 - wordcounterr3 - wordcounterr4 - wordcounterr5 - wordcounterr6 - wordcounterr7
+            sentences = sentences + myvar.count('.') + myvar.count('?') + myvar.count('!') - myvar.count('.0') - myvar.count('http') * 3 - myvar.count('...') * 3       # using a 2 multiplier to account for the multiple periods and potential question mark in a URL
+            # print(syllables, words, sentences)
 
     # calculate fk
     fk = (.39 * (words / sentences)) + (11.8 * (syllables / words)) -15.59
-
     final_fk = round(fk, 1)
     with open('lexile.txt') as f:
         data = f.read()
@@ -70,6 +87,8 @@ def create(request):
         if str(key) == str(final_fk):
             lexileoutput='<br>Estimated Lexile reading score: ' + str(lexiledata[key]) + 'L'
     output='Title: ' + title + '<br>URL: <a target="new" href="' + publicURL + '">' + publicURL + '</a><br>Approximate Flesch-Kincaid reading grade level: ' + str(round(fk, 1)) + lexileoutput
-    print(str(round(fk, 1)))
-
+    #print(str(round(fk, 1)))
+    sentences = 0
+    words = 0
+    syllables = 0
     return output
