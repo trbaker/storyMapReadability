@@ -13,18 +13,23 @@ function function1() {
 <body><font face="verdana, arial">
   <h2>ArcGIS Storymap readability</h2>
 
-	One of the most common ways teachers evaluate the utility of instructional content is with the Flesch-Kincaid grade level readability score.  This score (e.g. 4.9) tells an
+	One of the most common ways teachers evaluate the utility of instructional content is with a readability score.  While there are many readability assessment tools 
+	and reporting frameworks, this tool attempts to provide a handful of the most common scoring scenarios. This script calculates the readability score for an ArcGIS Storymaps (2020 version or later). 
+	<br><br>
+	Readability scoring frameworks:
+	<ul>
+		<LI>Flesh-Kincaid Grade Level readability: 	This score (e.g. 4.9) tells an
 	educator at approximately what grade and month, a typical student should be able to read and understand content.  For example, content receiving an FK score of 4.8, is on
 	target for typically fourth graders in their eight month of the school year. This prototype uses the common formula:
-	<br><br>
-	<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/8e68f5fc959d052d1123b85758065afecc4150c3" align="center">
-	<br><br>
-This script calculates the Flesch-Kincaid grade level readability score for an ArcGIS Storymap (new version only). The Lexile score is computed based on the FK score.  The Lexile score has not been extensively tested.
+	</li>
+	<LI>Lexile-approximate score: This Lexile score is converted based on the FK score.  This Lexile-approximate score should only be used for initial gauging of the matterial.
+		</li>
 	
+		</ul>
 	If you find an 
-	error or encounter a problem, please send a note to tbaker@esri.com
-	<div style="width: 700px;"><font size="-1">
-
+	error or encounter a problem, please send a note to tbaker@esri.com .
+		
+		<div style="width: 700px;"><font size="-1">
 <br />	
 <br />
 Enter the ArcGIS Storymap Id (e.g. d51f8ab5d4b84a8d8208a369fad5f520).  
